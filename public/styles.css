@@ -22,7 +22,24 @@
 .routineText{
     text-align: left;
     padding-left: 30px;
+    padding-right: 30px;
 }
+
+.activityCard{
+    border: black solid 2px;
+    padding-left: 13px;
+    padding-right: 13px;
+    padding-bottom: 13px;
+    margin-bottom: 15px;
+}
+
+.exerciseDisplayButton{
+    border: black solid 1px;
+    border-radius: 13px;
+    padding: 12px;
+    width: 50%;
+}
+
 .profileSubHead{
     display: flex;
     justify-content: space-between;

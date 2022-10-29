@@ -7,9 +7,10 @@ import Login from "./Login"
 import Profile from "./Profile";
 import Activities from "./Activities";
 import Routines from "./Routines";
+import RenderRoutinesByUser from "./RoutinesByUser";
 
 const App = () => {
-    const [loggedInUserData, setLoggedInUserData] = useState([]);
+    //const [loggedInUserData, setLoggedInUserData] = useState([]);
     const [routines, setRoutines] = useState([]);
     const [activities, setActivities] =useState([]);
     2
@@ -27,7 +28,6 @@ const App = () => {
           try {
               const fetchedRoutines = await callApi({ path: "/routines"})
               setRoutines(fetchedRoutines);
-              console.log(routines);
           } catch (error) {
               console.error(error)
           }
@@ -40,7 +40,6 @@ const App = () => {
             try {
                 const fetchedActivities = await callApi({ path: "/activities"})
                 setActivities(fetchedActivities);
-                console.log(activities);
             } catch (error) {
                 console.error(error)
             }
@@ -85,6 +84,7 @@ const App = () => {
                 <Route path="/activities" element={<Activities activities={activities} />}></Route>
                 <Route path="/my-profile" element={<Profile token={token} />}></Route>
                 <Route path="/activities" element={<Activities />}></Route>
+                <Route path="/users/:username/routines" element={<RenderRoutinesByUser/>}></Route>
             </Routes>
         </BrowserRouter>
     )

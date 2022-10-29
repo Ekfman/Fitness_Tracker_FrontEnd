@@ -6,7 +6,7 @@ import { callApi } from "./Api";
 const Register = ({setToken}) => {
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
-    const [errMsg, setErrMsg] = useState(null)
+    //const [errMsg, setErrMsg] = useState(null)
     const navigate = useNavigate();
     
     const submitHandler = async (e) => {
@@ -14,7 +14,7 @@ const Register = ({setToken}) => {
         try {
           const { token } = await callApi({ method: "POST", body: {username, password}, path: "/users/register" });
           setToken(token);
-          navigate("/login")
+          navigate("/routines")
         } catch (err) {
           console.error(err);
         }
