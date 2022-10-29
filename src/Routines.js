@@ -1,30 +1,35 @@
-import Routine from "./Routine";
-import { fetchAPIroutines } from "./Api";
-import { useState, useEffect } from "react";
+import { useState } from "react"
+import { callApi } from "./Api"
+import { useNavigate } from "react-router-dom"
 
-const Routines = () => {
-    const [routines, setRoutines] = useState([])
-    useEffect( () => {
-        const fetchRoutines = async () => {
-            try {
-                const fetchedRoutines = await fetchAPIroutines()
-                setRoutines(fetchedRoutines)
-            } catch (error) {
-                console.error(error)
-            }
-        }
-        fetchRoutines()
-      });
+const Routines = ({routines}) => {
+    const navigate = useNavigate();
+    
+    const getRoutinesByUser = () => {
+        navigate(`/users/${username}/routines`)
+   }
       return(
-        <div>
-            <h1>Search Routines Here!</h1>
+        <div className="main">
+            <h1>Explore Routines</h1>
             {routines.map( routine => {
                 return(
-                    <div>
+                    <div className="routineCard">
+                        <div className="routineText">
                         <h2>{routine.name}</h2>
-                        <h3>Goal: {routine.goal}</h3>
-                        <h3>See activities</h3>
-                        <p>created by: {routine.creatorName}</p>
+                        <h4>{routine.goal}</h4>
+                        <h3>Excercises:</h3>
+                        {routine.activities.map ( activity => {
+                            return(
+                                <div>
+                                    <h4>{activity.name}</h4>
+                                    <p>{activity.description}</p>
+                                    <span>Duration: </span>
+                                    <span>Count: </span>
+                                </div>
+                            )
+                        })}
+                        <p onClick={getRoutinesByUser}>created by: {routine.creatorName}</p>
+                        </div>
                     </div>
                 )
             }

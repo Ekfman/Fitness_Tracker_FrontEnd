@@ -1,20 +1,8 @@
 import { useEffect, useState } from "react";
-import { fetchAPIactivities } from "./Api";
+import { callApi } from "./Api";
 
-const Activities = () => {
-    const [activities, setActivities] = useState([])
+const Activities = ({activities}) => {
 
-    useEffect( () => {
-        const fetchActivities = async () => {
-            try {
-                const fetchedActivities = await fetchAPIactivities()
-                setActivities(fetchedActivities)
-            } catch (error) {
-                console.error(error)
-            }
-        }
-        fetchActivities();
-    })
 
     return (
         <div>

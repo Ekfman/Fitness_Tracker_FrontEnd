@@ -1,29 +1,26 @@
 const url = "https://powerful-garden-68078.herokuapp.com/api"
 
-export const fetchAPIroutines = async () => {
-    try {
-      const response = await fetch(`${url}/routines`, {
-        headers: {
-          "Content-Type": "application/json",
-        },
-      });
-      const data = await response.json();
-      return data;
-    } catch (err) {
-      console.error(err);
+export const callApi = async ({ method, path, token, body }) => {
+    const options = {
+      method: method ? method : "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    };
+  
+    if (token) {
+      options.headers.Authorization = `Bearer ${token}`;
     }
-  };
-
-  export const fetchAPIactivities = async () => {
+  
+    if (body) {
+      options.body = JSON.stringify(body);
+    }
+  
     try {
-        const response = await fetch(`${url}/activities`, {
-            headers: {
-                "Content-Type": "application/json",
-              },
-        });
-        const data = await response.json();
+        const result = await fetch(url + path, options);
+        const data = await result.json();
         return data;
     } catch (error) {
-        console.error(error)
+        console.error(err);
     }
   };
