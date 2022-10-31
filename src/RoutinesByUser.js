@@ -3,7 +3,7 @@ import { useParams } from "react-router-dom";
 import { callApi } from "./Api";
 
  
-const RenderRoutinesByUser = () => {
+const RoutinesByUser = () => {
     const { username } = useParams();
     const [creatorRoutines, setCreatorRoutines] = useState([])
     const [exerciseDisplay, setExerciseDisplay] = useState(false)
@@ -60,4 +60,4 @@ const RenderRoutinesByUser = () => {
 }
 
 
-export default RenderRoutinesByUser
+export default RoutinesByUser

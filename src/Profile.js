@@ -1,15 +1,14 @@
 import { useEffect, useState } from "react";
 import { callApi } from "./Api";
+import { useNavigate } from "react-router-dom";
 
 
 const Profile = ({token}) => {
+    const navigate = useNavigate();
     const [myRoutines, setMyRoutines] = useState([]);
-    const [formDisplay, setFormDisplay] = useState(false);
+    
     const userData = {}
     
-    const buttonHandler = () => {
-        setFormDisplay( prevState => !prevState )
-    }
 
     useEffect( () => {
         const fetchLoggedInUserData = async () => {
@@ -40,27 +39,16 @@ const Profile = ({token}) => {
         fetchMyRoutines();
     }, [])
 
+    const addRoutineButton = () => {
+        navigate("/create-routine")
+    }
+
     return(
     <div className="main">
         <h1>My Routines</h1>
         <div className="profileSubHead">
-            <button onClick={buttonHandler}>{ formDisplay ? "Undo" : "Create New Routine"}</button>
+            <button onClick={addRoutineButton}>Add Routine</button>
             <span>Sort by: Routine | Activity</span>
-        </div>
-        <div>
-           { formDisplay ? (
-            <div className="routineCard">
-                <label>Title: </label>
-                <input type="text" placeholder="Quad Day"></input>
-                <br></br>
-                <label>Description: </label>
-                <input type="text"></input>
-                <br></br>
-                <label>Activities:</label>
-                <br></br>
-                <button>Create Routine</button>
-            </div>
-           ) : <span></span>}
         </div>
         <div>
         {myRoutines.map( routine => {

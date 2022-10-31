@@ -1,15 +1,48 @@
-import { useState } from "react"
-import { callApi } from "./Api"
-import { Link } from "react-router-dom"
+import { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
+import { callApi } from "./Api";
 
-const Routines = ({routines}) => {
+const RoutinesByActivityId = () => {
+    const { activityId } = useParams();
     const [exerciseDisplay, setExerciseDisplay] = useState(false)
+    const [routines, setRoutines] = useState([])
+    
     const showExercises = () => {
         setExerciseDisplay( prev => !prev)
     }
-      return(
-        <div className="main">
-            <h1>Explore Routines</h1>
+    
+    useEffect( () => {
+        const fetchRoutines = async () => {
+            try {
+                const fetchedRoutines = await callApi({path:`/activities/${activityId}/routines`})
+                setRoutines(fetchedRoutines);
+                console.log(fetchedRoutines);
+            } catch (error) {
+                console.error(error)
+            }
+        }
+        fetchRoutines();
+    },[])
+    // const routinesByActivityId = () => {
+
+    //     const getRoutines = routines.map(routine => {
+    //         return(
+    //             routine.activities.map(activity => {
+    //                 if(activity.id === activityId){
+    //                     activityName = activity.name
+    //                     return routine
+    //                 }
+    //             })
+    //         )
+    //     })
+    //     return getRoutines;
+    // }
+    // const callRoutines = routinesByActivityId();
+    // console.log(callRoutines);
+    
+    return(
+        <div>
+            <h2>Hi</h2>
             <div>
             {routines.map( routine => {
                 return(
@@ -40,7 +73,8 @@ const Routines = ({routines}) => {
             )}
         </div>
         </div>
-      )
+
+    )
 }
 
-export default Routines;
+export default RoutinesByActivityId;

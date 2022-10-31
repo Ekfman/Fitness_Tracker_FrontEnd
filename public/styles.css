@@ -10,7 +10,7 @@
 .main {
     text-align: center;
 }
-.routineCard{
+.card{
     border: black solid 2px;
     border-radius: 30px;
     margin-bottom: 20px;
@@ -19,7 +19,7 @@
     padding-top: 10px;
     padding-bottom: 10px;
 }
-.routineText{
+.cardText{
     text-align: left;
     padding-left: 30px;
     padding-right: 30px;
@@ -27,10 +27,14 @@
 
 .activityCard{
     border: black solid 2px;
-    padding-left: 13px;
-    padding-right: 13px;
-    padding-bottom: 13px;
-    margin-bottom: 15px;
+    border-radius: 12px;
+    padding-left: 12px;
+    padding-bottom: 12px;
+    margin-bottom: 12px;
+}
+
+.editButton{
+    margin-left: 30px;
 }
 
 .exerciseDisplayButton{
@@ -45,4 +49,59 @@
     justify-content: space-between;
     padding-left: 60px;
     padding-right: 60px;
+}
+
+.routineName{
+    margin-bottom: 13px;
+    text-align: left;
+    padding-left: 12px; 
+    padding-top: 15px;
+}
+
+.routineDesc{
+    margin-bottom: 13px;
+    text-align: left;
+    padding-left: 12px; 
+}
+
+.routineDescInputBox{
+    width: 70%;
+    height: 20px;
+}
+
+.publicButton{
+    margin-left: 12px;
+    margin-bottom: 12px;
+}
+
+.addActButtonDiv{
+    display: flex;
+    justify-content: left;
+    margin-left: 12px;
+}
+
+.addActbutton{
+    padding: 8px;
+    margin-right: 8px;
+}
+
+.createRoutineButton{
+    display: flex;
+    justify-content: right;
+    margin-top: 12px;
+    margin-right: 30px;
+}
+
+.editActivityName{
+    font-size: 18px;
+    font-weight: bold;
+    width: 100%;
+    margin-bottom: 12px;
+    margin-top: 10px;
+}
+
+.editActivityDesc{
+    font-size: 16px;
+    width: 100%;
+    margin-bottom: 12px;
 }
