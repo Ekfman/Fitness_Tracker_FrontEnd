@@ -1,36 +1,37 @@
 import { useEffect, useState } from "react";
 import { callApi } from "./Api";
 import { useNavigate } from "react-router-dom";
+import { useParams } from "react-router-dom";
 
 
 const Profile = ({token}) => {
+
     const navigate = useNavigate();
     const [myRoutines, setMyRoutines] = useState([]);
-    
-    const userData = {}
+    const [myData, setMyData] = useState({});
     
 
     useEffect( () => {
         const fetchLoggedInUserData = async () => {
             try {
             const userData = await callApi({token, path: "/users/me"})
-            return userData;
+            setMyData(userData);
         } catch (error){
             console.error(error)
         }
         }
         if(token) {
-            console.log(token);
             fetchLoggedInUserData();
         }
     }, [token])
-    
-    const username = userData.username
 
+   // const { username } = useParams();
+    
     useEffect( () => {
         const fetchMyRoutines = async () => {
             try {
-                const fetchedRoutines = await callApi({path: `/users/${username}/routines`})
+                const fetchedRoutines = await callApi({token, path: `/users/${myData.username}/routines`})
+                console.log(fetchedRoutines);
                 setMyRoutines(fetchedRoutines);
             } catch (error) {
                 console.error(error)
@@ -40,7 +41,7 @@ const Profile = ({token}) => {
     }, [])
 
     const addRoutineButton = () => {
-        navigate("/create-routine")
+        navigate("/routines")
     }
 
     return(

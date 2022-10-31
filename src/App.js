@@ -8,9 +8,7 @@ import Profile from "./Profile";
 import Activities from "./Activities";
 import Routines from "./Routines";
 import RoutinesByUser from "./RoutinesByUser";
-import CreateRoutine from "./CreateRoutine";
 import RoutinesByActivityId from "./RoutinesByActivityId";
-import CreateActivity from "./CreateActivity";
 import EditActivity from "./EditActivity";
 
 const App = () => {
@@ -55,8 +53,7 @@ const App = () => {
                     <div>
                         <Link className="navbarLinks" to="/routines">Home</Link>
                         <Link className="navbarLinks" to="/activities">Activities</Link>
-                        <Link className="navbarLinks" to ="/create-routine">Create Routine</Link>
-                        <Link className="navbarLinks" to="/my-profile">My Routines</Link>
+                        <Link className="navbarLinks" to="my-routines">My Routines</Link>
                         <Link className="navbarLinks" to="/logout" onClick={logoutHandler}>Logout</Link>
                     </div>
                 ) : (
@@ -72,15 +69,12 @@ const App = () => {
             <Routes>
                 <Route path="/register" element={<Register setToken={setToken}/>}></Route>
                 <Route path="/login" element={<Login />}></Route>
-                <Route path="/routines" element={<Routines routines={routines} setRoutines={setRoutines}/>}></Route>
-                <Route path="/activities" element={<Activities setActivityToEdit={setActivityToEdit} activityToEdit={activityToEdit}/>}></Route>
-                <Route path="/create-routine" element={<CreateRoutine token={token} setRoutines={setRoutines} routines={setRoutines}/>}></Route>
-                <Route path="/my-profile" element={<Profile token={token} />}></Route>
-                <Route path="/activities" element={<Activities />}></Route>
+                <Route path="/routines" element={<Routines routines={routines} setRoutines={setRoutines} token={token}/>}></Route>
+                <Route path="/activities" element={<Activities setActivityToEdit={setActivityToEdit} token={token}/>}></Route>
+                <Route path="/my-routines" element={<Profile token={token} />}></Route>
                 <Route path="/users/:username/routines" element={<RoutinesByUser/>}></Route>
                 <Route path="/activities/:activityId/routines" element={<RoutinesByActivityId/>}></Route>
-                <Route path="/activities" element={<CreateActivity setActivities={setActivities} token={token}/>}></Route>
-                <Route path="/activities/:activityId" element={<EditActivity token={token} activityToEdit={activityToEdit} setActivities={setActivities} activities={activities}/>}></Route>
+                <Route path="/activities/:activityId" element={<EditActivity token={token} activityToEdit={activityToEdit}/>}></Route>
             </Routes>
         </BrowserRouter>
     )

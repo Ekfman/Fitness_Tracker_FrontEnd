@@ -1,8 +1,8 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { callApi } from "./Api";
 
-const EditActivity = ({token, activityToEdit, setActivities, activities}) => {
+const EditActivity = ({token, activityToEdit}) => {
     const [name, setName] = useState(activityToEdit.name)
     const [description, setDescription] = useState(activityToEdit.description)
     const navigate = useNavigate()
@@ -17,6 +17,8 @@ const EditActivity = ({token, activityToEdit, setActivities, activities}) => {
             console.log(error);
         }
     }
+
+    const handleCancel = () => navigate("/activities")
     
     return(
     <div>   
@@ -26,6 +28,7 @@ const EditActivity = ({token, activityToEdit, setActivities, activities}) => {
             <input className="editActivityName" type="text" value={name} onChange={ (e) => setName(e.target.value)} required></input>
             <input className="editActivityDesc" type="text" value={description} onChange={ (e) => setDescription(e.target.value)} required></input>            
             </div>
+            <button className="editButton" onClick={handleCancel}>Cancel</button>
             <button className="editButton">Edit Activity</button>
         </form>
     </div>
