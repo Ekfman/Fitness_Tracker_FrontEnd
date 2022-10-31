@@ -19,7 +19,6 @@ export const callApi = async ({ method, path, token, body }) => {
     try {
         const result = await fetch(url + path, options);
         const data = await result.json();
-        console.log(data);
         return data;
     } catch (error) {
         console.error(err);

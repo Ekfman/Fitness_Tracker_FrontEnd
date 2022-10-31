@@ -13,6 +13,7 @@ const EditActivity = ({token, activityToEdit}) => {
         try {
             await callApi({token, method: "PATCH", body: {name, description}, path: `/activities/${activityId}`})
             navigate("/activities")
+            window.alert("You have succesfully updated the activity!" )
         } catch (error) {
             console.log(error);
         }

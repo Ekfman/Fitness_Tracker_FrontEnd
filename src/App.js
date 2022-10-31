@@ -10,6 +10,7 @@ import Routines from "./Routines";
 import RoutinesByUser from "./RoutinesByUser";
 import RoutinesByActivityId from "./RoutinesByActivityId";
 import EditActivity from "./EditActivity";
+import DeleteNow from "./DeleteNow";
 
 const App = () => {
     //const [loggedInUserData, setLoggedInUserData] = useState([]);
@@ -71,10 +72,11 @@ const App = () => {
                 <Route path="/login" element={<Login />}></Route>
                 <Route path="/routines" element={<Routines routines={routines} setRoutines={setRoutines} token={token}/>}></Route>
                 <Route path="/activities" element={<Activities setActivityToEdit={setActivityToEdit} token={token}/>}></Route>
-                <Route path="/my-routines" element={<Profile token={token} />}></Route>
+                <Route path="/my-routines" element={<Profile token={token} setRoutines={setRoutines} routines={routines} />}></Route>
                 <Route path="/users/:username/routines" element={<RoutinesByUser/>}></Route>
                 <Route path="/activities/:activityId/routines" element={<RoutinesByActivityId/>}></Route>
                 <Route path="/activities/:activityId" element={<EditActivity token={token} activityToEdit={activityToEdit}/>}></Route>
+                <Route path="/delete" element={<DeleteNow/>}></Route>
             </Routes>
         </BrowserRouter>
     )
