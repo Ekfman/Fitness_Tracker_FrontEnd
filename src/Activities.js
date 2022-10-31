@@ -26,7 +26,7 @@ const Activities = ({token, setActivityToEdit}) => {
     const submitHandler = async (e) => {
         e.preventDefault();
         try {
-            const newActivity = await callApi({token, method: "POST", name, description, path:"/activities"})
+            const newActivity = await callApi({token, method: "POST", body: {name, description}, path:"/activities"})
                 setActivities([newActivity, ...activities])
                 navigate("/activities")
         } catch (error) {
@@ -37,7 +37,6 @@ const Activities = ({token, setActivityToEdit}) => {
     const addActivityHandler = () => {
         setActivityForm( prev => !prev)
     }
-
     
     return (
         <div>
