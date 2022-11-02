@@ -6,7 +6,6 @@ import { callApi } from "./Api";
 const Register = ({setToken}) => {
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
-    //const [errMsg, setErrMsg] = useState(null)
     const navigate = useNavigate();
     
     const submitHandler = async (e) => {
@@ -19,6 +18,7 @@ const Register = ({setToken}) => {
           console.error(err);
         }
       };
+  
 
     return(
         <div>

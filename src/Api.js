@@ -21,6 +21,6 @@ export const callApi = async ({ method, path, token, body }) => {
         const data = await result.json();
         return data;
     } catch (error) {
-        console.error(err);
+        console.error(error);
     }
   };

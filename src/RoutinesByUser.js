@@ -41,8 +41,8 @@ const RoutinesByUser = () => {
                                     <div className="activityCard">
                                         <h4>{activity.name}</h4>
                                         <p>{activity.description}</p>
-                                        <span>Duration: </span>
-                                        <span>Count: </span>
+                                        <p>Duration: {activity.duration} min </p>
+                                        <p>Sets: {activity.count}</p>
                                     </div>
                                 )
                             })

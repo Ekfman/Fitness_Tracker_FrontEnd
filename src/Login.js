@@ -14,8 +14,8 @@ const Login = ({setToken}) => {
           const token = await callApi({ method: "POST", body: {username, password}, path: "/users/login" });
           setToken(token);
           navigate("/routines")
-        } catch (err) {
-          console.error(err);
+        } catch (error) {
+          console.error(error)
         }
       };
 

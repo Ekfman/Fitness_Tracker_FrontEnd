@@ -16,29 +16,12 @@ const RoutinesByActivityId = () => {
             try {
                 const fetchedRoutines = await callApi({path:`/activities/${activityId}/routines`})
                 setRoutines(fetchedRoutines);
-                console.log(fetchedRoutines);
             } catch (error) {
                 console.error(error)
             }
         }
         fetchRoutines();
     },[])
-    // const routinesByActivityId = () => {
-
-    //     const getRoutines = routines.map(routine => {
-    //         return(
-    //             routine.activities.map(activity => {
-    //                 if(activity.id === activityId){
-    //                     activityName = activity.name
-    //                     return routine
-    //                 }
-    //             })
-    //         )
-    //     })
-    //     return getRoutines;
-    // }
-    // const callRoutines = routinesByActivityId();
-    // console.log(callRoutines);
     
     return(
         <div>

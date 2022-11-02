@@ -9,8 +9,6 @@ const Activities = ({token, setActivityToEdit}) => {
     const [name, setName] = useState("");
     const [description, setDescription] = useState("");
     const [createActivityForm, setCreateActivityForm] = useState(false);
-
-    const [editActivityForm, setEditActivityForm] = useState(false)
     
 
     useEffect( () => {
@@ -41,14 +39,11 @@ const Activities = ({token, setActivityToEdit}) => {
         }
     }
 
-    const addActivityHandler = () => {
-        setEditActivityForm( prev => !prev)
-    }
     
     return (
         <div>
             <h1 className="main">Browse all activities...</h1>
-            <button onClick={createActivityHandler}>{createActivityForm ? "Cancel" : "Add Activity"}</button>
+            <button onClick={createActivityHandler}>{createActivityForm ? "X" : "Add Activity"}</button>
             <div>
             {createActivityForm ? (
             <div className="card">
